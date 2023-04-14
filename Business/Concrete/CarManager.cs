@@ -23,17 +23,32 @@ namespace Business.Concrete
                 Console.WriteLine("Araba İsmi 2 Karakterden Küçük ve Günlük Fiyat 0 dan küçük olamaz");
         }
 
+        public void Delete(Car entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public List<Car> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _carDal.GetAll(c => c.Id == id);
         }
 
-        public List<Car> GetCasByColorId(int id)
+        //public List<Car> GetCarsByBrandId(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public List<Car> GetCarsByColorId(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public void Update(Car entity)
         {
             throw new NotImplementedException();
         }
