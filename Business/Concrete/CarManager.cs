@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,7 +26,7 @@ namespace Business.Concrete
 
         public void Delete(Car entity)
         {
-            throw new NotImplementedException();
+            _carDal.Delete(entity);
         }
 
         public List<Car> GetAll()
@@ -36,6 +37,11 @@ namespace Business.Concrete
         public List<Car> GetById(int id)
         {
             return _carDal.GetAll(c => c.Id == id);
+        }
+
+        public List<CarDetailsDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         //public List<Car> GetCarsByBrandId(int id)
@@ -50,7 +56,7 @@ namespace Business.Concrete
 
         public void Update(Car entity)
         {
-            throw new NotImplementedException();
+              _carDal.Update(entity);
         }
     }
 }

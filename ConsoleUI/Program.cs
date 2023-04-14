@@ -11,10 +11,39 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-           // CarAdd();
-           // CarGetAll();
-           // CarGetById(3);
+            // CarAdd();
+            // CarGetAll();
+            // CarGetById(3);
+            // CarUpdate();
+            // CarDelete(1003);
+            CarManager carManager = new CarManager(new EfCarDal());
+            
+            foreach (var item in carManager.GetCarDetails())
+            {
+                Console.WriteLine(item.CarName+"/ "+item.BrandName+"/"+item.ColorName);
+            }
+        }
 
+        private static void CarDelete(int id)
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            Car car3 = new Car();
+            car3.Id = id;
+
+            carManager.Delete(car3);
+            foreach (var car in carManager.GetAll())
+                Console.WriteLine("CarId:" + car.Id + " Car Name: " + car.Name);
+        }
+
+        private static void CarUpdate()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            Car car2 = new Car();
+            car2.Id = 2;
+            car2.Name = "TOGG 10X";
+            carManager.Update(car2);
+            foreach (var car in carManager.GetAll())
+                Console.WriteLine(car.Name);
         }
 
         private static void CarAdd()
