@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -16,12 +18,19 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car entity)
+        public IResult Add(Car entity)
         {
             if (entity.Name.Length > 2 && entity.DailyPrice > 0)
+            {
                 _carDal.Add(entity);
+                return new SuccessResult(Messages.ProductAdded);
+            }
             else
-                Console.WriteLine("Araba İsmi 2 Karakterden Küçük ve Günlük Fiyat 0 dan küçük olamaz");
+            {
+                return new ErrorResult(Messages.ProductNameInvalid);
+            }
+            
+          //  Console.WriteLine("Araba İsmi 2 Karakterden Küçük ve Günlük Fiyat 0 dan küçük olamaz");
         }
 
         public void Delete(Car entity)
@@ -29,19 +38,19 @@ namespace Business.Concrete
             _carDal.Delete(entity);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
-        public List<Car> GetById(int id)
+        public IDataResult<Car> GetById(int id)
         {
-            return _carDal.GetAll(c => c.Id == id);
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
-        public List<CarDetailsDto> GetCarDetails()
+        public IDataResult<List<CarDetailsDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(), Messages.ProductsListed);
         }
 
         //public List<Car> GetCarsByBrandId(int id)
