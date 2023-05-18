@@ -16,23 +16,34 @@ namespace ConsoleUI
             // CarGetById(3);
             // CarUpdate();
             // CarDelete(1003);
-            CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.GetCarDetails();
-            if (result.Success)
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            Customer customer = new Customer { UserId = 2, CompanyName = "Deneme A.Ş." };
+            customerManager.Add(customer);
+            var result = customerManager.GetAll();
+            foreach (var item in result.Data)
             {
-                foreach (var item in result.Data)
-                {
-                    Console.WriteLine(item.CarName + "/ " + item.BrandName + "/" + item.ColorName);
-                   
-                }
-                 Console.WriteLine(result.Message);
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
+                Console.WriteLine(item.CompanyName);
             }
             
         }
+
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    var result = carManager.GetCarDetails();
+        //    if (result.Success)
+        //    {
+        //        foreach (var item in result.Data)
+        //        {
+        //            Console.WriteLine(item.CarName + "/ " + item.BrandName + "/" + item.ColorName);
+
+        //        }
+        //         Console.WriteLine(result.Message);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
+
+        //}
 
         //private static void CarDelete(int id)
         //{
