@@ -16,6 +16,49 @@ namespace ConsoleUI
             // CarGetById(3);
             // CarUpdate();
             // CarDelete(1003);
+
+            //CustomerAdd();
+            //UserAdd();
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental = new Rental {
+                CarId = 1,
+                CustomerId = 1,
+                RentDate = DateTime.Now,
+                ReturnDate =DateTime.Now
+               
+             };
+
+            rentalManager.Add(rental);
+            
+            //var result = rentalManager.GetAll();
+            
+            //foreach (var item in result.Data)
+            //{
+            //    Console.WriteLine(item.CustomerId);
+            //}
+           
+        }
+
+        private static void UserAdd()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            User user = new User
+            {
+                FirstName = "Ali",
+                LastName = "Deneme",
+                EMail = "alideneme@deneme.com",
+                Password = "123456abc"
+            };
+            userManager.Add(user);
+            var result = userManager.GetAll();
+            foreach (var item in result.Data)
+            {
+                Console.WriteLine(item.FirstName);
+            }
+        }
+
+        private static void CustomerAdd()
+        {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
             Customer customer = new Customer { UserId = 2, CompanyName = "Deneme A.Ş." };
             customerManager.Add(customer);
@@ -24,7 +67,6 @@ namespace ConsoleUI
             {
                 Console.WriteLine(item.CompanyName);
             }
-            
         }
 
         //    CarManager carManager = new CarManager(new EfCarDal());

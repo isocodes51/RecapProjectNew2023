@@ -25,22 +25,22 @@ namespace Business.Concrete
 
         public void Delete(User entity)
         {
-            throw new NotImplementedException();
+            _userDal.Delete(entity);
         }
 
         public IDataResult<List<User>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
         public IDataResult<User> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == id));
         }
 
         public void Update(User entity)
         {
-            throw new NotImplementedException();
+            _userDal.Update(entity);
         }
     }
 }
