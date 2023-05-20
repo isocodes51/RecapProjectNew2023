@@ -49,9 +49,10 @@ namespace Business.Concrete
             return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id));
         }
 
-        public void Update(Brand entity)
+        public IResult Update(Brand entity)
         {
             _brandDal.Update(entity);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

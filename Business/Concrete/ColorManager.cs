@@ -40,9 +40,10 @@ namespace Business.Concrete
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == id));
         }
 
-        public void Update(Color entity)
+        public IResult Update(Color entity)
         {
             _colorDal.Update(entity);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

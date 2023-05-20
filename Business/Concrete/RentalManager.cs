@@ -48,9 +48,10 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r=> r.RentalId == id),Messages.UserListed);
         }
 
-        public void Update(Rental entity)
+        public IResult Update(Rental entity)
         {
-            _rentalDal.Update(entity);       
+            _rentalDal.Update(entity);
+            return new SuccessResult(Messages.ProductUpdated);
         }
 
         public Rental GetCarAvailable(int carId)

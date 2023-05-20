@@ -39,9 +39,10 @@ namespace Business.Concrete
             return new SuccessDataResult<Customer>(_customerDal.Get(b => b.CustomerId == id));
         }
 
-        public void Update(Customer entity)
+        public IResult Update(Customer entity)
         {
             _customerDal.Update(entity);
+            return new SuccessResult(Messages.ProductUpdated);
         }    
     }
 }

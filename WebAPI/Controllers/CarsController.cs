@@ -11,21 +11,20 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-      
-    public class BrandsController : Controller
+    public class CarsController : Controller
     {
-        IBrandService _brandService;
+        ICarService _carService;
 
-        public BrandsController(IBrandService brandService)
+        public CarsController(ICarService carService)
         {
-            _brandService = brandService;
+            _carService = carService;
         }
 
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _brandService.GetAll();
+            var result = _carService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -36,7 +35,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _brandService.GetById(id);
+            var result = _carService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -45,9 +44,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Brand brand)
+        public IActionResult Add(Car Car)
         {
-            var result = _brandService.Add(brand);
+            var result = _carService.Add(Car);
             if (result.Success)
             {
                 return Ok(result);
@@ -56,9 +55,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Brand brand)
+        public IActionResult Delete(Car Car)
         {
-            var result = _brandService.Delete(brand);
+            var result = _carService.Delete(Car);
             if (result.Success)
             {
                 return Ok(result);
@@ -67,9 +66,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Brand brand)
+        public IActionResult Update(Car Car)
         {
-            var result = _brandService.Update(brand);
+            var result = _carService.Update(Car);
             if (result.Success)
             {
                 return Ok(result);

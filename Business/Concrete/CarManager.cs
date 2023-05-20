@@ -64,9 +64,10 @@ namespace Business.Concrete
         //    throw new NotImplementedException();
         //}
 
-        public void Update(Car entity)
+        public IResult Update(Car entity)
         {
-              _carDal.Update(entity);
+          _carDal.Update(entity);
+          return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }
