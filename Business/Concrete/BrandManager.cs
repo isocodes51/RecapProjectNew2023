@@ -31,9 +31,10 @@ namespace Business.Concrete
             }
         }
 
-        public void Delete(Brand entity)
+        public IResult Delete(Brand entity)
         {
             _brandDal.Delete(entity);
+           return new SuccessResult(Messages.ProductDeleted) ;
         }
 
         public IDataResult<List<Brand>> GetAll()

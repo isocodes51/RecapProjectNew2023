@@ -23,9 +23,10 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
-        public void Delete(User entity)
+        public IResult Delete(User entity)
         {
             _userDal.Delete(entity);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
         public IDataResult<List<User>> GetAll()

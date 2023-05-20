@@ -31,9 +31,10 @@ namespace Business.Concrete
         }
 
 
-        public void Delete(Rental entity)
+        public IResult Delete(Rental entity)
         {
             _rentalDal.Delete(entity);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
         public IDataResult<List<Rental>> GetAll()

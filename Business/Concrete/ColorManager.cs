@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,12 +21,13 @@ namespace Business.Concrete
         public IResult Add(Color entity)
         {
             _colorDal.Add(entity);
-            return new Result(true, "Ürün Eklendi");
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public void Delete(Color entity)
+        public IResult Delete(Color entity)
         {
             _colorDal.Delete(entity);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
         public IDataResult<List<Color>> GetAll()

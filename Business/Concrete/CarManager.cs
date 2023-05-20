@@ -33,9 +33,10 @@ namespace Business.Concrete
           //  Console.WriteLine("Araba İsmi 2 Karakterden Küçük ve Günlük Fiyat 0 dan küçük olamaz");
         }
 
-        public void Delete(Car entity)
+        public IResult Delete(Car entity)
         {
             _carDal.Delete(entity);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
         public IDataResult<List<Car>> GetAll()
