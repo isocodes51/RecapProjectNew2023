@@ -14,7 +14,14 @@ namespace Business.Constants
         public static string UserListed = "Kullanıcı Listelendi";
         public static string CarNotReturned = "Araba Henüz Müşteri Tarafından Teslim Edilmemiştir.";
         public static string ProductDeleted = "Ürün Silindi.";
-        public static string ProductUpdated = "Ürün Güncerllendi.";
+        public static string ProductUpdated = "Ürün Güncellendi.";
+        public static string ImageAdded = "Resim Eklendi.";
+        public static string CarImageLimitReached = "Araba Resim Ekleme Sınırı Aşıldı.";
+        public static string CarImageAlreadyHave = "Eklenmek istenen Resim Mevcut.";
+        public static string ImageUpdated = "Resim Güncellendi.";
+        public static string ImagesListedByCarId = "Resimler Car Id'ye göre sıralanıyor.";
+        
+
 
 
     }
