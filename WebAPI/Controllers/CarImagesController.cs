@@ -50,20 +50,20 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("delete")]
-        public IActionResult Delete(CarImage carImage)
-        {
-            //We find the which Id in DataBase
-            var carDeleteImage = _carImageService.GetById(carImage.Id).Data;
-            //then we deleted in the database
-            var result = _carImageService.Delete(carDeleteImage);
+        //[HttpPost("delete")]
+        //public IActionResult Delete(CarImage carImage)
+        //{
+        //    //We find the which Id in DataBase
+        //    var carDeleteImage = _carImageService.GetImagesByCarId(carImage.Id).Data;
+        //    //then we deleted in the database
+        //    var result = _carImageService.Delete(carDeleteImage);
 
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result);
+        //}
 
         [HttpGet("getall")]
         public IActionResult GetAll()
@@ -76,17 +76,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getbyid")]
-        public IActionResult GetbyId(int id)
-        {
-            var result = _carImageService.GetById(id);
+        //[HttpGet("getbyid")]
+        //public IActionResult GetbyId(int id)
+        //{
+        //    var result = _carImageService.GetById(id);
 
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result);
+        //}
         [HttpGet("getimagebycarid")]
         public IActionResult GetImagesByCarId(int carId)
         {

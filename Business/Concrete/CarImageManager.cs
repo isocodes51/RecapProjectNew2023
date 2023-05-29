@@ -37,14 +37,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ImageAdded);
         }
 
-        public IResult Add(CarImage entity)
+        public IResult Delete(CarImage carImage)
         {
-            throw new NotImplementedException();
-        }
-
-        public IResult Delete(CarImage entity)
-        {
-            throw new NotImplementedException();
+            _fileHelperService.Delete(PathContants.CarImagesPath + carImage.ImagePath);
+            _carImageDal.Delete(carImage);
+            return new SuccessResult();
         }
 
         public IDataResult<List<CarImage>> GetAll()
@@ -52,9 +49,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
 
-        public IDataResult<CarImage> GetById(int id)
+        public IDataResult<CarImage> GetByImageId(int imageId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == imageId));
         }
 
         public IDataResult<List<CarImage>> GetImagesByCarId(int id)
@@ -68,11 +65,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == id), Messages.ImagesListedByCarId);
         }
 
-        public IResult Update(CarImage entity)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public IResult Update(IFormFile file, CarImage carImage)
         {
             carImage.ImagePath = _fileHelperService.Update(file, PathContants.CarImagesPath + carImage.ImagePath,

@@ -6,6 +6,6 @@ namespace Business.Constants
 {
     public class PathContants
     {
-        public const string CarImagesPath = "root\\Uploads\\CarImages";
+        public const string CarImagesPath = "root\\Uploads\\Images";
     }
 }
